@@ -26,12 +26,11 @@ public class Payment {
     @Column(nullable = false)
     private LocalDate paymentDate;
 
-    @Enumerated(EnumType.STRING) // Store enum as STRING in DB for readability
+    @Enumerated(EnumType.STRING)
     @NotNull(message = "Payment method is required")
     @Column(nullable = false)
     private PaymentMethod paymentMethod;
 
-    // Constructors
     public Payment() {}
 
     public Payment(Booking booking, Double amount, LocalDate paymentDate, PaymentMethod paymentMethod) {
@@ -41,7 +40,6 @@ public class Payment {
         this.paymentMethod = paymentMethod;
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
