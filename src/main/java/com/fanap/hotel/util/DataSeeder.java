@@ -1,4 +1,4 @@
-package com.fanap.hotel.util.constants;
+package com.fanap.hotel.util;
 
 import com.fanap.hotel.model.*;
 import com.fanap.hotel.repository.*;

@@ -1,0 +1,24 @@
+package com.fanap.hotel.service;
+
+import com.fanap.hotel.dto.room.CreateRoomRequestDTO;
+import com.fanap.hotel.dto.room.RoomInfoDTO;
+import com.fanap.hotel.model.Room;
+
+import java.util.List;
+
+public interface RoomService {
+
+    public RoomInfoDTO getRoomDTO(Room room);
+
+    public Room createRoomFromDTO(RoomInfoDTO dto);
+
+    List<RoomInfoDTO> getAllRoomsInfo();
+
+    RoomInfoDTO getRoomInfo(Long roomId);
+
+    RoomInfoDTO createRoom(CreateRoomRequestDTO createRoomRequestDTO);
+
+    RoomInfoDTO updateRoom(Long roomId, CreateRoomRequestDTO createRoomRequestDTO);
+
+    void deleteRoom(Long roomId);
+}
