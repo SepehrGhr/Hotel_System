@@ -1,6 +1,8 @@
 package com.fanap.hotel.dto;
 
 
+import org.springframework.http.HttpStatusCode;
+
 public class BaseResponse<T> {
 
     private String message;
@@ -31,6 +33,16 @@ public class BaseResponse<T> {
 
     public static <T> BaseResponse<T> success(T data, String message, Integer code) {
         return new BaseResponse<>(message, code, System.currentTimeMillis(), true, data);
+    }
+
+    public static <T> BaseResponse<T> fail(T errors){
+        return new BaseResponse<>(
+                ResponseMessage.FAILED.getMessage(),
+                ResponseCode.ERROR.getCode(),
+                System.currentTimeMillis(),
+                false,
+                errors
+        );
     }
 
     public String getMessage() {
