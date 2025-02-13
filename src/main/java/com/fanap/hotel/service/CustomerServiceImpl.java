@@ -59,7 +59,6 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     private Customer getById(Long customerId) {
-        return customerRepository.findById(customerId)
-                .orElseThrow(() -> new CustomerNotFoundException(customerId));
+        return customerRepository.findById(customerId).orElseThrow(() -> new CustomerNotFoundException(customerId));
     }
 }

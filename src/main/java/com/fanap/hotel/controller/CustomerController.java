@@ -7,6 +7,7 @@ import com.fanap.hotel.service.CustomerService;
 import com.fanap.hotel.util.constants.Constants;
 import com.fanap.hotel.util.constants.ResponseCodePool;
 import com.fanap.hotel.util.constants.Routes;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +33,7 @@ public class CustomerController {
     }
 
     @PostMapping
-    public ResponseEntity<BaseResponse<CustomerInfoDTO>> createCustomer(@RequestBody CreateCustomerRequestDTO createCustomerRequestDTO) {
+    public ResponseEntity<BaseResponse<CustomerInfoDTO>> createCustomer(@Valid @RequestBody CreateCustomerRequestDTO createCustomerRequestDTO) {
         return ResponseEntity.status(201).body(BaseResponse.success(customerService.createCustomer(createCustomerRequestDTO)));
     }
 
