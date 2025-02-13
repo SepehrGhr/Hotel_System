@@ -6,6 +6,7 @@ import com.fanap.hotel.service.RoomService;
 import com.fanap.hotel.util.constants.Constants;
 import com.fanap.hotel.util.constants.ResponseCodePool;
 import com.fanap.hotel.util.constants.Routes;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,8 +34,8 @@ public class RoomController {
     }
 
     @PostMapping
-    public ResponseEntity<BaseResponse<RoomInfoDTO>> createRoom(@RequestBody CreateRoomRequestDTO createRoomRequestDTO){
-        return ResponseEntity.ok(BaseResponse.success(roomService.createRoom(createRoomRequestDTO)));
+    public ResponseEntity<BaseResponse<RoomInfoDTO>> createRoom(@RequestBody CreateRoomRequestDTO createRoomRequestDTO) {
+        return ResponseEntity.status(201).body(BaseResponse.success(roomService.createRoom(createRoomRequestDTO)));
     }
 
     @PutMapping (Routes.ROOM_ID_PARAM_KEY)
@@ -43,8 +44,8 @@ public class RoomController {
     }
 
     @DeleteMapping (Routes.ROOM_ID_PARAM_KEY)
-    ResponseEntity<BaseResponse<String>> deleteRoom(@PathVariable(value = Constants.ID) Long roomId){
+    public ResponseEntity<Void> deleteRoom(@PathVariable(Constants.ID) Long roomId) {
         roomService.deleteRoom(roomId);
-        return ResponseEntity.ok(BaseResponse.success(ResponseCodePool.ROOM_DELETED.getMessage()));
+        return ResponseEntity.noContent().build();
     }
 }

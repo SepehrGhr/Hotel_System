@@ -2,10 +2,10 @@ package com.fanap.hotel.service;
 
 import com.fanap.hotel.dto.room.CreateRoomRequestDTO;
 import com.fanap.hotel.dto.room.RoomInfoDTO;
+import com.fanap.hotel.exception.RoomNotFoundException;
 import com.fanap.hotel.mapper.RoomMapper;
 import com.fanap.hotel.model.Room;
 import com.fanap.hotel.repository.RoomRepository;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,12 +35,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public RoomInfoDTO getRoomInfo(Long roomId) {
-        Optional<RoomInfoDTO> roomInfoDTO = roomRepository.findById(roomId).map(this::getRoomDTO);
-        if (roomInfoDTO.isEmpty()) {
-            throw new RuntimeException("ROOM_NOT_FOUND");
-        } else {
-            return roomInfoDTO.get();
-        }
+        return getRoomDTO(getById(roomId));
     }
 
     @Override
@@ -52,7 +47,7 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public RoomInfoDTO updateRoom(Long roomId, CreateRoomRequestDTO createRoomRequestDTO) {
         Room room = getById(roomId);
-        BeanUtils.copyProperties(createRoomRequestDTO, room);
+        RoomMapper.INSTANCE.updateRoomFromDto(createRoomRequestDTO, room);
         roomRepository.save(room);
         return getRoomDTO(room);
     }
@@ -63,6 +58,6 @@ public class RoomServiceImpl implements RoomService {
     }
 
     private Room getById(Long roomId){
-        return roomRepository.findById(roomId).orElseThrow(() -> new RuntimeException("ROOM_NOT_FOUND"));
+        return roomRepository.findById(roomId).orElseThrow(() -> new RoomNotFoundException(roomId));
     }
 }

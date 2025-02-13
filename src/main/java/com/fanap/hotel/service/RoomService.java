@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface RoomService {
 
-    public RoomInfoDTO getRoomDTO(Room room);
+    RoomInfoDTO getRoomDTO(Room room);
 
-    public Room createRoomFromDTO(RoomInfoDTO dto);
+    Room createRoomFromDTO(RoomInfoDTO dto);
 
     List<RoomInfoDTO> getAllRoomsInfo();
 

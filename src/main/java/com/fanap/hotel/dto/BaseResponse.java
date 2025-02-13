@@ -45,6 +45,10 @@ public class BaseResponse<T> {
         );
     }
 
+    public static <T> BaseResponse<T> fail(T errors, String message, Integer code){
+        return new BaseResponse<>(message, code, System.currentTimeMillis(), false, errors);
+    }
+
     public String getMessage() {
         return message;
     }
