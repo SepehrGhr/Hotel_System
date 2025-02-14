@@ -57,7 +57,8 @@ public class RoomServiceImpl implements RoomService {
         roomRepository.deleteById(roomId);
     }
 
-    private Room getById(Long roomId){
+    @Override
+    public Room getById(Long roomId){
         return roomRepository.findById(roomId).orElseThrow(() -> new RoomNotFoundException(roomId));
     }
 }

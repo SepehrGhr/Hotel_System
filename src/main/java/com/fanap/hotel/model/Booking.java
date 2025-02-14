@@ -3,6 +3,8 @@ package com.fanap.hotel.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -113,6 +115,14 @@ public class Booking {
         if (additionalServices != null) {
             this.additionalServices.addAll(additionalServices);
         }
+    }
+
+    public BigDecimal getTotalAmount() {
+        BigDecimal totalAmount = room.getPrice();
+        for(AdditionalService additionalService : additionalServices){
+            totalAmount = totalAmount.add(additionalService.getPrice());
+        }
+        return totalAmount;
     }
 }
 

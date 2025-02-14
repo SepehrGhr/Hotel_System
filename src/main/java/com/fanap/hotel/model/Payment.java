@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import java.time.LocalDate;
+import java.math.BigDecimal;
+
 
 @Entity
 @Table(name = "payments")
@@ -20,7 +22,7 @@ public class Payment {
     @NotNull(message = "Payment amount is required")
     @Positive(message = "Payment amount must be positive")
     @Column(nullable = false)
-    private Double amount;
+    private BigDecimal amount;
 
     @NotNull(message = "Payment date is required")
     @Column(nullable = false)
@@ -33,7 +35,7 @@ public class Payment {
 
     public Payment() {}
 
-    public Payment(Booking booking, Double amount, LocalDate paymentDate, PaymentMethod paymentMethod) {
+    public Payment(Booking booking, BigDecimal amount, LocalDate paymentDate, PaymentMethod paymentMethod) {
         this.booking = booking;
         this.amount = amount;
         this.paymentDate = paymentDate;
@@ -56,11 +58,11 @@ public class Payment {
         this.booking = booking;
     }
 
-    public Double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 

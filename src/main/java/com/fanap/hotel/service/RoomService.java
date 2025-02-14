@@ -21,4 +21,6 @@ public interface RoomService {
     RoomInfoDTO updateRoom(Long roomId, CreateRoomRequestDTO createRoomRequestDTO);
 
     void deleteRoom(Long roomId);
+
+    Room getById(Long roomId);
 }

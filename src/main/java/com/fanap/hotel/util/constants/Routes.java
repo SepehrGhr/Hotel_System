@@ -16,4 +16,7 @@ public class Routes {
     // Customer
     public static final String CUSTOMER_ROUTES = V1_API + "/customer";
     public static final String CUSTOMER_ID_PARAM_KEY = "/{id}";
+
+    // Booking
+    public static final String BOOKING_ROUTE = V1_API + "/booking";
 }

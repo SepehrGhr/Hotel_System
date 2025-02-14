@@ -3,6 +3,7 @@ package com.fanap.hotel.config;
 import com.fanap.hotel.dto.BaseResponse;
 import com.fanap.hotel.dto.BindExceptionResponseDTO;
 import com.fanap.hotel.exception.CustomerNotFoundException;
+import com.fanap.hotel.exception.RoomNotAvailableException;
 import com.fanap.hotel.exception.RoomNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ConstraintViolationException;
@@ -49,7 +50,13 @@ public class SystemExceptionHandler {
     }
 
     @ExceptionHandler(CustomerNotFoundException.class)
-    public ResponseEntity<BaseResponse<String>> handleCustomerNotFound(RoomNotFoundException ex) {
+    public ResponseEntity<BaseResponse<String>> handleCustomerNotFound(CustomerNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(BaseResponse.fail(null, ex.getMessage(), 404));
+    }
+
+    @ExceptionHandler(RoomNotAvailableException.class)
+    public ResponseEntity<BaseResponse<String>> handleRoomNotAvailable(RoomNotAvailableException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(BaseResponse.fail(null, ex.getMessage(), 404));
     }

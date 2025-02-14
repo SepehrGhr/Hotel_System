@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController(Routes.CUSTOMER_ROUTES)
+@RestController
+@RequestMapping(value = Routes.CUSTOMER_ROUTES)
 public class CustomerController {
 
     private final CustomerService customerService;

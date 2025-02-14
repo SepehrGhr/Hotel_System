@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +43,13 @@ public class Room {
         this.status = status;
         this.bookings = new ArrayList<>();
     }
+
+    public boolean isAvailable(LocalDate startDate, LocalDate endDate) {
+        return bookings.stream().noneMatch(booking ->
+                (startDate.isBefore(booking.getCheckOutDate()) && endDate.isAfter(booking.getCheckInDate()))
+        );
+    }
+
 
     public Long getId() {
         return id;
