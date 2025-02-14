@@ -24,7 +24,7 @@ public class AdditionalService {
     private BigDecimal price;
 
     @ManyToMany(mappedBy = "additionalServices")
-    private Set<Booking> bookings = new HashSet<>();
+    private final Set<Booking> bookings = new HashSet<>();
 
     public AdditionalService() {}
 

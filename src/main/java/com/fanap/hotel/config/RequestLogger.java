@@ -18,7 +18,7 @@ import java.util.Enumeration;
 @Component
 public class RequestLogger {
 
-    private Logger logger = LoggerFactory.getLogger(RequestLogger.class);
+    private final Logger logger = LoggerFactory.getLogger(RequestLogger.class);
 
     @Pointcut("within(@org.springframework.web.bind.annotation.RestController *)")
     public void restControllerPointCut(){

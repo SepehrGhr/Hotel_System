@@ -24,5 +24,5 @@ public interface CustomerService {
 
     void deleteCustomer(Long customerId);
 
-    public Customer getById(Long customerId);
+    Customer getById(Long customerId);
 }

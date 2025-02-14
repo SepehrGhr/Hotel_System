@@ -17,7 +17,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-public class BookingServiceImpl implements BookingService{
+public class BookingServiceImpl implements BookingService {
 
     private final BookingRepository bookingRepository;
     private final CustomerService customerService;
@@ -42,7 +42,7 @@ public class BookingServiceImpl implements BookingService{
         Room room = roomService.getById(createBookingRequestDTO.getRoomId());
 
         // check if selected room is available in selected time span
-        if(!room.isAvailable(createBookingRequestDTO.getCheckInDate(), createBookingRequestDTO.getCheckOutDate())){
+        if (!room.isAvailable(createBookingRequestDTO.getCheckInDate(), createBookingRequestDTO.getCheckOutDate())) {
             throw new RoomNotAvailableException(createBookingRequestDTO.getRoomId());
         }
         Booking booking = new Booking(customer, room, LocalDate.now(),

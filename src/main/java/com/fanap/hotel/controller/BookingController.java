@@ -21,7 +21,7 @@ public class BookingController {
     }
 
     @PostMapping(Routes.CUSTOMER_ID_PARAM_KEY)
-    public ResponseEntity<BaseResponse<BookingInfoDTO>> createBooking(@PathVariable(value = Constants.ID) Long customerId,@Valid @RequestBody BookingWithPaymentRequestDTO request) {
+    public ResponseEntity<BaseResponse<BookingInfoDTO>> createBooking(@PathVariable(value = Constants.ID) Long customerId, @Valid @RequestBody BookingWithPaymentRequestDTO request) {
         return ResponseEntity.status(201).body(BaseResponse.success(bookingService.createBooking(customerId, request.getCreateBookingRequestDTO(), request.getCreatePaymentRequestDTO())));
     }
 }

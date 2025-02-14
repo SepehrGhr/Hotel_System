@@ -46,7 +46,7 @@ public class Booking {
             joinColumns = @JoinColumn(name = "booking_id"),
             inverseJoinColumns = @JoinColumn(name = "service_id")
     )
-    private Set<AdditionalService> additionalServices = new HashSet<>();
+    private final Set<AdditionalService> additionalServices = new HashSet<>();
 
     public Booking() {}
 
