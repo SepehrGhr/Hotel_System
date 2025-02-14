@@ -13,7 +13,7 @@ This is a **Spring Boot** application for managing hotel bookings, customers, ro
 
 ---
 ## 🛠️ Tech Stack
-- **Backend**: Java, Spring Boot, Spring Data JPA
+- **Backend**: Java, Spring Boot, Spring Data JPA, Spring Web, Hibernate
 - **Database**: MySQL
 - **Validation**: Hibernate Validator (Jakarta Validation API)
 - **Dependency Management**: Maven
