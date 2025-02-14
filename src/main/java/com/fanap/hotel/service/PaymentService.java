@@ -6,6 +6,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface PaymentService {
-
     public void processPayment(Booking booking, CreatePaymentRequestDTO paymentRequest);
 }

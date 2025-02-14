@@ -9,13 +9,14 @@ import com.fanap.hotel.model.Booking;
 import com.fanap.hotel.model.Customer;
 import com.fanap.hotel.model.Room;
 import com.fanap.hotel.repository.BookingRepository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
-
+@Service
 public class BookingServiceImpl implements BookingService{
 
     private final BookingRepository bookingRepository;

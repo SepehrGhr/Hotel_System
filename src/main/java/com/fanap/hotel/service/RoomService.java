@@ -3,9 +3,11 @@ package com.fanap.hotel.service;
 import com.fanap.hotel.dto.room.CreateRoomRequestDTO;
 import com.fanap.hotel.dto.room.RoomInfoDTO;
 import com.fanap.hotel.model.Room;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface RoomService {
 
     RoomInfoDTO getRoomDTO(Room room);

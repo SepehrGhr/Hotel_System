@@ -6,9 +6,11 @@ import com.fanap.hotel.exception.CustomerNotFoundException;
 import com.fanap.hotel.mapper.CustomerMapper;
 import com.fanap.hotel.model.Customer;
 import com.fanap.hotel.repository.CustomerRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CustomerServiceImpl implements CustomerService{
 
     private final CustomerRepository customerRepository;

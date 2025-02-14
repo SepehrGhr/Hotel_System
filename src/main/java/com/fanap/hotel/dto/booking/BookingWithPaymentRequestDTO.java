@@ -2,13 +2,14 @@ package com.fanap.hotel.dto.booking;
 
 import com.fanap.hotel.dto.payment.CreatePaymentRequestDTO;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class BookingWithPaymentRequestDTO {
 
-    @NotBlank(message = "required.BOOKING_REQUEST")
+    @NotNull(message = "required.BOOKING_REQUEST")
     private CreateBookingRequestDTO createBookingRequestDTO;
 
-    @NotBlank(message = "required.PAYMENT_REQUEST")
+    @NotNull(message = "required.PAYMENT_REQUEST")
     private CreatePaymentRequestDTO createPaymentRequestDTO;
 
     public BookingWithPaymentRequestDTO(){
